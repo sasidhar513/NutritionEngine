@@ -65,7 +65,7 @@ def getXandY(inputFoodList, duplicateSampleCount,grams):
 	food_items=[food_item.split("^") for food_item in food_items]
 	food_dict={}
 	[food_dict.update({str(float(food_item[0])): food_item}) for food_item in food_items]
-	X=np.array([[[z*float(food_dict[x][y] )*(float(grams))/100for y in range(4,39)] for x in inputFoodList] for z in range(1,duplicateSampleCount+1)])
+	X=np.array([[[z*float(food_dict[x][y] )*(float(grams))/100 for y in range(4,39)] for x in inputFoodList] for z in range(1,duplicateSampleCount+1)])
 	y=np.array([[x*m for x in dailyLimitList] for m in range (1, duplicateSampleCount+1)])
 	return (X,y)
 	
