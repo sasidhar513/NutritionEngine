@@ -62,11 +62,7 @@ def getExclusionList(nutrientList,limit):
 	"""
 	out=[]
 	nutrientWiseTopFoods=pickle.load(open(topNutritionFoodPickleFile,'rb'))
-	print(nutrientWiseTopFoods.keys())
 	for i in nutrientList:
-		print('Hi')
-		print(nutrientWiseTopFoods[i][0])
 		out+= [str(int(float(x))) for x in nutrientWiseTopFoods[i][1][:limit]]
-		print('Hello')
 	return out
 
