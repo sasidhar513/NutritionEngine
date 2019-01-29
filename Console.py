@@ -3,15 +3,14 @@ from Regression import *
 from FoodEngineUtils import *
 
 def show_Products(groupkey,selectedFoods,productDict):
-	print('\n')
-	print("daad")
+	print('\nSelect one of the below, Please enter the number associated with the Food')
 	for i in range ( len(productDict)/3):
 		 print ("{0:<3}".format(str(3*i+1))+' for '+"{0:<25}".format(productDict[3*i+1].split('^')[1][:25])+'  |  '+"{0:<3}".format(str(3*i+2))+' for '+"{0:<25}".format(productDict[3*i+2].split('^')[1][:25])	+'  |  '+"{0:<3}".format(str(3*i+3))+' for '+"{0:<25}".format(productDict[3*i+3].split('^')[1][:25])) 
 	if len(productDict)%3==2:
 		print ("{0:<3}".format(str(len(productDict)-1))+' for '+"{0:<25}".format(productDict[len(productDict)-1].split('^')[1][:25])+'  |  '+"{0:<3}".format(str(len(productDict)))+' for '+"{0:<25}".format(productDict[len(productDict)].split('^')[1][:25]))
 	if len(productDict)%3==1:
 		print("{0:<3}".format(str(len(productDict)))+' for '+"{0:<25}".format(productDict[len(productDict)].split('^')[1][:25]))
-	print(str(len(productDict))+' for previous menu')
+	print('\n'+str(len(productDict)+1)+' for previous menu')
 	print("# to exit application")
 
 def display_output(X,y,theta,finalFoods,grams,dailyLimitList_Y,reqMineralList):
@@ -50,22 +49,22 @@ def showFoodGroups():
 	looper=True
 	while(looper):
 		looper1=True
-		print("selected Foods for todays Meal:")
+		print("selected Food for todays Meal:")
 		print(finalFoods)
 		for i in selectedFoods.keys() :
 			print('\t'+selectedFoods[i][0]+' : '+', '.join(selectedFoods[i][1]))
-		print("\nselect FoodGroup: press")
+		print("\nselected Food Group from Below, Please enter the number associated with the Food Group")
 		for i in selectedFoods.keys() :
 			print('\t'+str(i)+" for "+selectedFoods[i][0])
 		print("\t# to exit application")
 		try:
 			groupkey=int(input())
-			if groupkey in range(1,9):
+			if groupkey in range(1,10):
 				while(looper1):	
 					show_Products(groupkey,selectedFoods,selectedFoods[groupkey][2])
 					food_dict=selectedFoods[groupkey][2]
 					foodKey=int(input())
-					if foodKey in range(1,len(food_dict)):
+					if foodKey in range(1,len(food_dict)+1):
 						selectedFoods[groupkey][1].append(selectedFoods[groupkey][2][foodKey].split('^')[1].replace(',','')[:25])
 						finalFoods.append(selectedFoods[groupkey][2][foodKey].split('^')[0])
 					else:
