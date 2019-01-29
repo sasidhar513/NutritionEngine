@@ -4,7 +4,6 @@ import numpy as np
 import pickle
 import os
 from FoodEngineConstants import *
-from Food_Engine import * 
 from Regression import *
 
 def printTopFoodForNutrients(nutrientList,length):
@@ -41,6 +40,7 @@ def pickleTopFoodsForEveryNutrition():
 	for i in range(1,36):
 		temp=nutrient_data[nutrient_data[:,i].argsort()[::-1]]
 		dictLi.append(str(i)+':'+"('"+mineralDesc[i-1]+"_TopFoods',["+",".join("'{0}'".format(w) for w in temp[:temp.shape[0],[0]].astype('str').reshape(temp.shape[0]).tolist())+'])')
+		print        (str(i)+':'+"('"+mineralDesc[i-1]+"_TopFoods',["+",".join('"{0}"'.format(w) for w in rr[:rr.shape[0],[0]].astype('str').reshape(rr.shape[0]).tolist())+']),')
 	topNutritiousFood=','.join(dictLi)
 	nutrientWiseTopFoods=eval('{'+topNutritiousFood+'}')
 	with open('topNutritionFood.pickle','wb') as picleLoad:
