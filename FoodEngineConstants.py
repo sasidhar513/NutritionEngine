@@ -1,21 +1,21 @@
 
 #requirement List in the below order
-#[calcium,carbohydrate_by_difference,cholesterol,choline,copper,energy,fatty_acids_total_saturated, fatty_acids_trans,fluoride,folate,folic_acid,iron,lycopene,magnesium, manganese,niacin,pantothenic_acid,phosphorus,potassium,protein,riboflavin,selenium,sodium,sugars,theobromine,thiamin,total_lipid_fat_,vitaminctotal_ascorbic_acid,vitamin_a,vitamin_b_12,vitamin_b_6,vitamin_e,vitamin_k,zinc,dietary_fiber] 
+nutrientNames=['calcium','carbohydrate_by_difference','cholesterol','choline','copper','energy','fatty_acids_total_saturated',' fatty_acids_trans','fluoride','folate','folic_acid','iron','lycopene','magnesium','manganese','niacin','pantothenic_acid','phosphorus','potassium','protein','riboflavin','selenium','sodium','sugars','theobromine','thiamin','total_lipid_fat_','vitaminctotal_ascorbic_acid','vitamin_a','vitamin_b_12','vitamin_b_6','vitamin_e','vitamin_k','zinc','dietary_fiber'] 
 dailyRequirementLimitNutrients=[1200.0, 325.0, 300.0, 550.0, 2.0, 2500.0, 20.0, 2.0, 10.0, 400.0, 400.0, 25.0, 15000.0, 350.0, 5.0, 16.0, 6.0, 1000.0, 3500.0, 56.0, 1.6, 55.0, 2400.0, 35.0, 500.0, 2.0, 60.0, 90.0, 900.0, 6.0, 2.0, 12.0, 120.0, 15.0, 30]
 addList=[]
-TopFoodsForEachVitaminCount=5
+TopFoodsForEachVitaminCount=1
 grams=100
 reqMineralList=[0,1,6,10,11,19,33,34]
 sampleCount=1
 exclusionNutrientList=[2]
-exclusionNutrientFoodCount=3000
+exclusionNutrientFoodCount=1
 alpha = 0.000000191345000009999999999999999999999999999 #literally an alpha.. what else shall I explain, duh?
 iters = 1000 # If you dont know what this is for this is not right for you
-firstRun=False
+firstRun=True
 thetaFile="/home/hduser/Downloads/Food_Engine/theta.txt"
 costFile="/home/hduser/Downloads/Food_Engine/prevCost.txt"
 priviousCost=100000000
-topNutritionFoodPickleFile="/home/hduser/Downloads/Food_Engine/topNutritionFood.pickle"
+topNutritionFoodPickleFile="topNutritionFood.pickle"
 iterations=1000
 
 selectedFoods={1:('Cereal_Grains',[],{1: '20130^Barley flour or meal', 2: '20131^Barley malt flour', 3: '20011^Buckwheat flour, whole-groat', 4: '20316^Corn flour, whole-grain, white', 5: '20647^Millet flour', 6: '20090^Rice flour, brown', 7: '20061^Rice flour, white, unenriched', 8: '20064^Rye flour, medium', 9: '20648^Sorghum flour, whole-grain', 10: '20080^Wheat flour, whole-grain ', 11: '20004^Barley, hulled', 12: '20008^Buckwheat', 13: '20012^Bulgur, dry', 14: '20314^Corn grain, white', 15: '20029^Couscous, cooked', 16: '20028^Couscous, dry', 17: '20105^Macaroni, vegetable, enriched, dry', 18: '20031^Millet, raw', 19: '20118^Noodles, flat, crunchy', 20: '20038^Oats ', 21: '20124^Pasta, whole-wheat, dry', 22: '20035^Quinoa, uncooked', 23: '20040^Rice, brown, medium-grain, raw', 24: '20058^Rice, white, steamed', 25: '20062^Rye grain', 26: '20066^Semolina, enriched', 27: '20067^Sorghum grain', 28: '20140^Spelt, uncooked', 29: '20075^Wheat, soft white', 30: '16157^Chickpea flour (besan)', 31: '16115^Soy flour, full-fat, raw'}),
