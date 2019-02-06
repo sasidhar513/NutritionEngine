@@ -17,7 +17,6 @@ finalFoods=[]
 #finalFoods=[str(int(float(food))) for food in  [topFoodsForANutrient for topFoodsForANutrient in getTopFoodForNutrients(TopFoodsForEachVitaminCount)]if food not in exclusionList]+addList
 if firstRun:
 	finalFoods=showFoodGroups()
-	finalFoods+=['9033', '9163', '9079', '9094', '9292', '12061', '12087', '12104', '5062', '15265', '9500', '9021', '9037', '9040', '9421', '9322', '1123', '1211', '2043', '2030', '2025', '2009', '2004', '2047', '2006', '2005', '2044', '4584', '4593', '16022', '16056', '16144', '11003', '11457', '11696', '11282', '11216', '11215', '11165']
 	open(inputFile,'w').write(','.join(finalFoods))
 else:
 	finalFoods=open(inputFile,'r').read().split('\n')[0].split(',')
