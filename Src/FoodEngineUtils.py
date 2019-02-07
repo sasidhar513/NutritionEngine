@@ -29,8 +29,10 @@ def getTopFoodForNutrients(length):
 	return finalFoods
 
 #This is to pickle all foods in sorted order  
-def pickleTopFoodsForEveryNutrition():
+def pickleTopFoodsForEveryNutrition(allFoods):
 	nutrient_data=open(foodsWithNutrientDetalsFinalFile,"r").read().split('\n')[1:] #extracts all data from the file.. eliminating the header
+	if not allFoods:
+		nutrient_data=[x for x in nutrient_data if str(int(x.split('^')[0])) in selectedFoodIds]
 	nutrient_data=[x.split("^") for x in nutrient_data ]
 	mineralDesc=open(foodsWithNutrientDetalsFinalFile,"r").read().split('\n')[0].split('^')[nutrientStartIndex:] #getting all nutrient names from header
 	nutrient_data=np.array([x for x in nutrient_data ])# Filter food items using the wanted food groups
@@ -42,8 +44,12 @@ def pickleTopFoodsForEveryNutrition():
 		#print        (str(i)+':'+"('"+mineralDesc[i-1]+"_TopFoods',["+",".join('"{0}"'.format(w) for w in rr[:rr.shape[0],[0]].astype('str').reshape(rr.shape[0]).tolist())+']),')
 	topNutritiousFood=','.join(dictLi)
 	nutrientWiseTopFoods=eval('{'+topNutritiousFood+'}')
-	with open('topNutritionFoodsAll.pickle','wb') as picleLoad:
-		pickle.dump(nutrientWiseTopFoods,picleLoad)
+	if allFoods:
+		with open(topNutritionFoodPickleFileAllFoods,'wb') as picleLoad:
+			pickle.dump(nutrientWiseTopFoods,picleLoad)
+	else:
+		with open(topNutritionFoodPickleFileSelectedFoods,'wb') as picleLoad:
+			pickle.dump(nutrientWiseTopFoods,picleLoad)		
 
 def getXandY(inputFoodList, duplicateSampleCount,grams,dailyLimitList,reqMineralList):
 	food_items=open(foodsWithNutrientDetalsFinalFile).read().split('\n')[1:]
@@ -65,3 +71,13 @@ def getExclusionList(nutrientList,limit):
 		out+= [str(int(float(x))) for x in nutrientWiseTopFoods[i][1][:limit]]
 	return out
 
+def getTopFoodsForNutrient(allFoods,nurientIndex,length):
+	nutrientWiseTopFoods={}
+	if(allFoods):
+		nutrientWiseTopFoods=pickle.load(open(topNutritionFoodPickleFileAllFoods,'rb'))
+	else:
+		nutrientWiseTopFoods=pickle.load(open(topNutritionFoodPickleFileSelectedFoods,'rb'))
+		
+	return (nutrientWiseTopFoods[nurientIndex+1][0],[str(int(float(x))) for x in nutrientWiseTopFoods[nurientIndex+1][1][:length+1]])
+		
+	
