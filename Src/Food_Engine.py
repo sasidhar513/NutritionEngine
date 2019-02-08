@@ -53,6 +53,34 @@ for i in range(iterations):
 display_output(X,y,theta,finalFoods,grams,dailyLimitList_Y,reqMineralList)
 
 
+def getDifferencePercentage(X,y,theta):
+dtProduct=dotProduct(X,theta)
+required=y[0]
+computedTotal=dtProduct[0]
+ratio=(y/dtProduct).tolist()[0]
+difference=(y-dtProduct).tolist()[0]
+for i in range(len(ratio)):
+	addMoreList=[]
+	removeExisting=[]
+	if (ratio[i]>2 and difference[i]>50) or ratio[i]>999:
+		addMoreList.append()
+		print("For the nutrient " +nutrientsList[reqMineralList[i]]+"\n\tratio is "+
+		str(ratio[i])+"\n\tdifference is "+str(difference[i])+
+		"\n\tComputedTotal is "+str(computedTotal[i])+
+		"\n\trequired is "+str(required[i]))
+			
+	for i in range(len(ratio)):
+		if(ratio[i]<0.5 and the differ
+
+for i in range(len(dtProduct))
+	if dtProduct[i]>2 and :
+return dtProduct
+
+	
+display_output(X,y,theta,finalFoods,grams,dailyLimitList_Y,reqMineralList)
+
+print( getDifferencePercentage(X,y,theta))
+
 
 
 
