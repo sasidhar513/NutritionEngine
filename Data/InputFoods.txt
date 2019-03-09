@@ -1,0 +1,66 @@
+1
+10   #Wheat flour, whole-grain   
+20   #Oats                       
+24   #Rice, white, steamed     
+9999
+2
+6    #Carrots, raw             
+7    #Coriander (cilantro) leav  
+8    #Cucumber, with peel, raw   
+9    #Drumstick pods, raw      
+11   #Garlic, raw                
+12   #Ginger root, raw         
+18   #Onions, raw              
+20   #Peppers, hot chili, green  
+24   #Spinach, raw             
+25   #Tomatoes, yellow, raw      
+9999
+3
+12   #Peanuts, all types, raw  
+9999
+4
+15   #sunflower Oil, high oleic
+9999
+5
+2    #Mustard, prepared, yellow  
+3    #Salt, table              
+9    #chili powder             
+12   #cumin seed               
+14   #fenugreek seed             
+21   #pepper, black            
+25   #turmeric, ground           
+9999
+6
+4    #Egg, white, raw, fresh     
+9    #Milk, whole, 3.25% milkfa
+9999
+7
+1    #Apples, raw, red deliciou  
+4    #Bananas, raw               
+12   #Dates, deglet noor       
+15   #Gooseberries, raw        
+16   #Grapefruit, raw, pink and  
+18   #Guavas, common, raw      
+22   #Lemons, raw, without peel  
+28   #Oranges, raw, all commerc  
+29   #Papayas, raw               
+32   #Pineapple, raw, all varie  
+35   #Pomegranates, raw          
+44   #Tamarinds, raw             
+46   #Watermelon, raw     
+9999
+8
+1    #Chicken, skinless, bonele  
+8    #Chicken, gizzard, all cla  
+15   #Fish, bass, fresh water, 
+17   #Lamb, trimmed retail cuts
+9999
+9
+1    #Apricots, dried, sulfured  
+4    #Figs, dried, uncooked      
+9    #Plums,prunes, dried, stew
+10   #almonds                    
+11   #cashew raw                 
+15   #coconut meat, raw        
+9999
+#
