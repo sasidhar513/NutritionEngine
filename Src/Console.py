@@ -1,6 +1,5 @@
 from FoodEngineConstants import *
 from Regression import *
-from FoodEngineUtils import *
 
 def show_Products(groupkey,selectedFoods,productDict):
 	print('\nSelect one of the below, Please enter the number associated with the Food')
@@ -19,7 +18,7 @@ def display_output(X,y,theta,finalFoods,grams,dailyLimitList_Y,reqMineralList):
 	food_dict={}
 	[food_dict.update({str(int(food_item[0])): food_item}) for food_item in food_items]
 	requiredMineralNames=[nutrientsList[i] for i in reqMineralList]
-	print(requiredMineralNames)
+	#print(requiredMineralNames)
 	outputDoubleArray=[]
 	outputDoubleArray.append(['Food Name','ID','weight']+requiredMineralNames)
 	outputDoubleArray.append(['-'*27,'-'*12,'-'*12]+['-'*12]*len(requiredMineralNames))
@@ -38,16 +37,90 @@ def display_output(X,y,theta,finalFoods,grams,dailyLimitList_Y,reqMineralList):
 	outputDoubleArray.append(['Difference','','']+((y-dotProduct(X,theta)).tolist()[0]))
 	outputDoubleArray.append(['-'*27,'-'*12,'-'*12]+['-'*12]*len(requiredMineralNames))
 	outputString=''
-	for row in outputDoubleArray:
+	for row in outputDoubleArray[:2]:
 		outRow=''
 		outRow+="{0:<27}".format(row[0][:25])+"{0:<12}".format(row[1][:10])+"{0:<12}".format(str(row[2])[:10])
 		for index in range(3,len(row)):
 			outRow+="{0:<12}".format(str(row[index])[:10])
-		print(outRow) 
+		#print(outRow) 
+		outputString+=outRow
+		outputString+='\n'
+		
+	for row in outputDoubleArray[2:-7]:
+		outRow=''
+		outRow+="{0:<27}".format(row[0][:25])+"{0:<12}".format(row[1][:10])+"{0:<12}".format(str(row[2])[:10])
+		for index in range(3,len(row)):
+			outRow+="{0:<12}".format(str('{:f}'.format(float(row[index])))[:10])
+		#print(outRow) 
+		outputString+=outRow
+		outputString+='\n'
+	for row in outputDoubleArray[len(outputDoubleArray)-7:]:
+		outRow=''
+		outRow+="{0:<27}".format(row[0][:25])+"{0:<12}".format(row[1][:10])+"{0:<12}".format(str(row[2])[:10])
+		for index in range(3,len(row)):
+			outRow+="{0:<12}".format(str(row[index])[:10])
+		#print(outRow) 
 		outputString+=outRow
 		outputString+='\n'
 		
 	open(outputFile,'w').write(outputString)
+	
+
+def display_output_normalized(X,y,theta,finalFoods,grams,dailyLimitList_Y,reqMineralList,normalizeList):
+	food_items=open(foodsWithNutrientDetalsFinalFile).read().split('\n')[1:]
+	food_items=[food_item.split("^") for food_item in food_items]
+	food_dict={}
+	[food_dict.update({str(int(food_item[0])): food_item}) for food_item in food_items]
+	requiredMineralNames=[nutrientsList[i] for i in reqMineralList]
+	#print(requiredMineralNames)
+	outputDoubleArray=[]
+	outputDoubleArray.append(['Food Name','ID','weight']+requiredMineralNames)
+	outputDoubleArray.append(['-'*27,'-'*12,'-'*12]+['-'*12]*len(requiredMineralNames))
+	for looper3 in range(len(finalFoods)):
+		foodName=food_dict[finalFoods[looper3]][3]
+		weight=theta[:,1][looper3]*100
+		id=finalFoods[looper3]
+		reqNutrientValues=[float(food_dict[finalFoods[looper3]][y1] )*(float(weight/100)) for y1 in [x+nutrientStartIndex for x in reqMineralList]]
+		reqNutrientValues=[normalizeList[i]*reqNutrientValues[i] for i in range(len(reqNutrientValues))]
+		outputDoubleArray.append([foodName,id,weight]+reqNutrientValues)
+
+	outputDoubleArray.append(['-'*27,'-'*12,'-'*12]+['-'*12]*len(requiredMineralNames))
+	outputDoubleArray.append(['Total','','']+dotProduct(X,theta).tolist()[0])
+	outputDoubleArray.append(['-'*27,'-'*12,'-'*12]+['-'*12]*len(requiredMineralNames))
+	outputDoubleArray.append(['Required','','']+y.tolist()[0])
+	outputDoubleArray.append(['-'*27,'-'*12,'-'*12]+['-'*12]*len(requiredMineralNames))
+	outputDoubleArray.append(['Difference','','']+((y-dotProduct(X,theta)).tolist()[0]))
+	outputDoubleArray.append(['-'*27,'-'*12,'-'*12]+['-'*12]*len(requiredMineralNames))
+	outputString=''
+	for row in outputDoubleArray[:2]:
+		outRow=''
+		outRow+="{0:<27}".format(row[0][:25])+"{0:<12}".format(row[1][:10])+"{0:<12}".format(str(row[2])[:10])
+		for index in range(3,len(row)):
+			outRow+="{0:<12}".format(str(row[index])[:10])
+		#print(outRow) 
+		outputString+=outRow
+		outputString+='\n'
+		
+	for row in outputDoubleArray[2:-7]:
+		outRow=''
+		outRow+="{0:<27}".format(row[0][:25])+"{0:<12}".format(row[1][:10])+"{0:<12}".format(str(row[2])[:10])
+		for index in range(3,len(row)):
+			outRow+="{0:<12}".format(str('{:f}'.format(float(row[index])))[:10])
+		#print(outRow) 
+		outputString+=outRow
+		outputString+='\n'
+	for row in outputDoubleArray[len(outputDoubleArray)-7:]:
+		outRow=''
+		outRow+="{0:<27}".format(row[0][:25])+"{0:<12}".format(row[1][:10])+"{0:<12}".format(str(row[2])[:10])
+		for index in range(3,len(row)):
+			outRow+="{0:<12}".format(str(row[index])[:10])
+		#print(outRow) 
+		outputString+=outRow
+		outputString+='\n'
+		
+	open(outputFileNormalised,'w').write(outputString)
+	
+	
 #foodGroupFunctionMapperDict={1: showCereal_Grains, 2: showVegetables,3: showLegume_Products,4:showFats_And_Oils,5:showSpices,6:showDairy_And_Egg_Products, 7:showFruits, 8:showMeat_Products}
 
 def showFoodGroups():

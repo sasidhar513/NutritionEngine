@@ -4,6 +4,9 @@ import numpy as np
 import pickle
 import os
 from FoodEngineConstants import *
+def rangeCost(X,theta, yMin,yMax):
+	pass
+	
 
 def computeCost(X, theta,y):
 	pred=dotProduct(X,theta)
