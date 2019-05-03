@@ -287,7 +287,3 @@ def add_or_remove_foods(X,y,theta,finalFoods):
 		looper=False
 		#print("You chose to exit or gave wrong Input, Thank you for using this Application")
 		return (finalFoods,theta,0)
-
-	
-		
-	

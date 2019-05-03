@@ -159,4 +159,3 @@ def showFoodGroups():
 			looper=False
 			print("You chose to exit or gave wrong Input, Thank you for using this Application")
 	return finalFoods
-

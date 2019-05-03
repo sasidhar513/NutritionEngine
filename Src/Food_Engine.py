@@ -129,13 +129,4 @@ if  firstRun:
 	foodEngine(inputList,np.array([[i]*0 for i in np.random.rand(0)]),0)	
 else:	
 	dailyRequirementLimitNutrients=	[float(x) for x in open(dailyRequirementLimitNutrientsFile,'r').read().split(',')]
-	foodEngine([],np.array([[i]*0 for i in np.random.rand(0)]),0)	
-
-
-
-
-
-
-
-
-
+	foodEngine([],np.array([[i]*0 for i in np.random.rand(0)]),0)
