@@ -1,5 +1,6 @@
 from FoodEngineConstants import *
 from Regression import *
+import codecs
 
 def show_Products(groupkey,selectedFoods,productDict):
 	print('\nSelect one of the below, Please enter the number associated with the Food')
@@ -13,13 +14,15 @@ def show_Products(groupkey,selectedFoods,productDict):
 	print("# to exit application")
 
 def display_output(X,y,theta,finalFoods,grams,dailyLimitList_Y,reqMineralList):
-	food_items=open(foodsWithNutrientDetalsFinalFile).read().split('\n')[1:]
+	food_items=list([])
+	with codecs.open(foodsWithNutrientDetalsFinalFile, 'r', encoding='utf-8', errors='ignore') as fdata:
+		food_items=fdata.read().split('\n')[1:]
 	food_items=[food_item.split("^") for food_item in food_items]
 	food_dict={}
 	[food_dict.update({str(int(food_item[0])): food_item}) for food_item in food_items]
 	requiredMineralNames=[nutrientsList[i] for i in reqMineralList]
 	#print(requiredMineralNames)
-	outputDoubleArray=[]
+	outputDoubleArray=list([])
 	outputDoubleArray.append(['Food Name','ID','weight']+requiredMineralNames)
 	outputDoubleArray.append(['-'*27,'-'*12,'-'*12]+['-'*12]*len(requiredMineralNames))
 	for looper3 in range(len(finalFoods)):
@@ -67,7 +70,9 @@ def display_output(X,y,theta,finalFoods,grams,dailyLimitList_Y,reqMineralList):
 	
 
 def display_output_normalized(X,y,theta,finalFoods,grams,dailyLimitList_Y,reqMineralList,normalizeList):
-	food_items=open(foodsWithNutrientDetalsFinalFile).read().split('\n')[1:]
+	food_items=list([])
+	with codecs.open(foodsWithNutrientDetalsFinalFile, 'r', encoding='utf-8', errors='ignore') as fdata:
+		food_items=fdata.read().split('\n')[1:]
 	food_items=[food_item.split("^") for food_item in food_items]
 	food_dict={}
 	[food_dict.update({str(int(food_item[0])): food_item}) for food_item in food_items]

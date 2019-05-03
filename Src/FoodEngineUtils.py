@@ -5,6 +5,8 @@ import pickle
 import os
 from FoodEngineConstants import *
 from Regression import *
+import codecs
+
 from Console import *
 import copy
 
@@ -59,7 +61,9 @@ def getXandY(inputFoodList, duplicateSampleCount,grams,dailyLimitList,reqMineral
 	avg=sum(dailyLimitList)/len(dailyLimitList)
 	normalizeList=[avg/x  if x > 0 else 1 for x in dailyLimitList]
 	dailyLimitList=[normalizeList[i]*dailyLimitList[i] for i in range(len(normalizeList))]
-	food_items=open(foodsWithNutrientDetalsFinalFile).read().split('\n')[1:]
+	food_items = list([])
+	with codecs.open(foodsWithNutrientDetalsFinalFile, 'r', encoding='utf-8', errors='ignore') as fdata:
+		food_items=fdata.read().split('\n')[1:]
 	food_items=[food_item.split("^") for food_item in food_items]
 	food_dict={}
 	[food_dict.update({str(int(food_item[0])): food_item}) for food_item in food_items]

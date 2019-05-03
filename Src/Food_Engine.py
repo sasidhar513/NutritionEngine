@@ -98,7 +98,7 @@ if  firstRun:
 	fatAmt=((100-carbPercentage-proteinPecentage)/100.0)*calories
 
 	if carbPercentage+proteinPecentage> 95.0 :
-		Print("Please enter correct percentages next time you use the App.")
+		print("Please enter correct percentages next time you use the App.")
 		sys.exit()
 
 	print(carbAmt/4.0, protAmt/4.0, fatAmt/9.0)
