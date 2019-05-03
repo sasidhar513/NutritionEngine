@@ -1,7 +1,9 @@
+from pathlib import Path
+
 
 #requirement List in the below order
 home=True
-projectPath='/home/hduser/Downloads/Nutremo_V2/Nutremo_Src' if home else '/home/frdvepmsdev/Sasidhar/NutritionEngine-master'
+projectPath = str(Path().absolute()).rsplit('/', 1)[0]
 
 foodsWithNutrientDetalsFinalFile=projectPath+'/Data/FoodsWithNutrientDetalsFinal.txt'
 
