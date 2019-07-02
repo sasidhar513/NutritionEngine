@@ -2,7 +2,6 @@ from pathlib import Path
 
 
 #requirement List in the below order
-home=True
 projectPath = str(Path().absolute()).rsplit('/', 1)[0]
 
 foodsWithNutrientDetalsFinalFile=projectPath+'/Data/FoodsWithNutrientDetalsFinal.txt'
